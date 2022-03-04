@@ -3,6 +3,8 @@
 /* Liest die Eingabedatei ein,                           */
 /* sucht nach den Vorkommen des eingegebenen Wortes      */
 /* und gibt die Anzahl in einer Ausgabedatei aus         */
+/* first run v. 1.0.0 24.12.1999                         */
+/* retouched v. 1.0.1 04.03.2022 github upload           */
 /* ----------------------------------------------------- */
 
 #include <time.h>
@@ -54,12 +56,12 @@ int main(int argc, char **argv)
 /* ---------------------------------------------------------------------- */
 /* DATEIEN OEFFNEN                                                        */
 /* ---------------------------------------------------------------------- */
-	if ( (infile=fopen(EINGABEDATEI,"rb")) == NULL ) 
+	if ( (infile=fopen(EINGABEDATEI,"rb")) == NULL )
 	{
 		printf("ERROR open INPUT-File: %s",EINGABEDATEI);
 		exit(1);
 	}
-	if ( (tempfile=fopen(TEMPDATA,"wb")) == NULL ) 
+	if ( (tempfile=fopen(TEMPDATA,"wb")) == NULL )
 	{
 		printf("ERROR open TEMP-File: %s",TEMPDATA);
 		exit(1);
@@ -72,7 +74,7 @@ int main(int argc, char **argv)
       }else break;
    }
    fclose(tempfile);
-   fclose(infile);  
+   fclose(infile);
 
 	strcpy(outfilename, EINGABEDATEI);
 
@@ -86,12 +88,12 @@ int main(int argc, char **argv)
 	   strcpy(ptr1, ".txt");
    }
 
-	if ( (outfile=fopen(outfilename,"wb")) == NULL ) 
+	if ( (outfile=fopen(outfilename,"wb")) == NULL )
 	{
 		printf("\nERROR open OUTPUT-File: %s\n", outfilename);
 		exit(1);
 	}
-	if ( (tempfile=fopen(TEMPDATA,"rb")) == NULL ) 
+	if ( (tempfile=fopen(TEMPDATA,"rb")) == NULL )
 	{
 		printf("ERROR open TEMP-File: %s",TEMPDATA);
 		exit(1);
@@ -109,7 +111,7 @@ int main(int argc, char **argv)
       {
          if(strstr_count(zpuff,mystrlwr(argv[2])) != 1)
          {
-            zcount+=strstr_count(zpuff,mystrlwr(argv[2])); 
+            zcount+=strstr_count(zpuff,mystrlwr(argv[2]));
          }else zcount++;
       }
    }
@@ -131,7 +133,7 @@ int strstr_count(const char *string, const char *substring) {
          if(!substring[k+1])
             count++;
    return(count);
-} 
+}
 long dateilaenge(FILE *infile) {
    long curpos, laenge;
    curpos = ftell(infile);
